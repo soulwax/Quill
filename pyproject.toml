@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "readme-generator-cli"
+version = "1.0.0"
+description = "Generate comprehensive README files using Repopack and Gemini"
+readme = "README.md"
+requires-python = ">=3.9,<3.13"  # Changed this line to fix version constraint
+authors = [
+    { name = "Your Name", email = "your.email@example.com" }
+]
+dependencies = [
+    "google-generativeai>=0.2.0",
+    "python-dotenv>=1.0.0",
+    "rich>=13.7.0",
+]
+
+[project.scripts]
+readme-generator = "readme_generator.__main__:main"
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+
+[tool.pytest]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
