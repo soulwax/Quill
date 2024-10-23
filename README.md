@@ -2,7 +2,7 @@
 
 ## Description
 
-This CLI tool leverages the power of Repopack and Gemini to automatically generate comprehensive README files for your projects. It analyzes your codebase, extracts relevant information, and uses Gemini to generate a well-structured and informative README.md.
+This CLI tool leverages Repopack and Google Gemini to automatically generate comprehensive README files for your projects. It analyzes your codebase, extracts relevant information, and generates a well-structured and informative README.md.
 
 ## Key Features
 
