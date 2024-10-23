@@ -24,7 +24,7 @@ This CLI tool leverages Repopack and Google Gemini to automatically generate com
 - **Python 3.9 or later:**  Ensure Python is installed on your system.
 - **Node.js:** Needed for installing Repopack globally.
 - **Google Cloud Account:** You need a Google Cloud account to use the Gemini API.
-- **API Key:** Obtain a Gemini API key from your Google Cloud project.
+- **API Key:** Obtain your own Google Gemini API key using Flash 1.5 for free from [here](https://ai.google.dev/gemini-api/docs/api-key).
 - **Environment Variables:** You need to set the following environment variables:
     - `GEMINI_API_KEY`: Your Gemini API key.
 
