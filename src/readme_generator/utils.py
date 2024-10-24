@@ -26,15 +26,17 @@ def ensure_repopack_installed() -> None:
 def run_repopack(directory: Path, output_file: Path) -> None:
     """Run Repopack on a directory."""
     try:
+        # Construct the path to the local repopack executable
+        repopack_path = Path(__file__).parent.parent.parent / 'node_modules' / '.bin' / 'repopack' 
+
         subprocess.run([
-            "repopack",
+            str(repopack_path),  # Use the constructed path here 
             str(directory),
             "-o", str(output_file)
         ], check=True)
     except subprocess.CalledProcessError as e:
         logger.error(f"Failed to run Repopack: {e}")
         sys.exit(1)
-
 def read_file(path: Path) -> str:
     """Read and return the contents of a file."""
     try:
