@@ -2,7 +2,7 @@
 
 ## Description
 
-This CLI tool leverages Repopack and Google Gemini to automatically generate comprehensive README files for your projects. It analyzes your codebase, extracts relevant information, and generates a well-structured and informative README.md.
+This CLI tool automatically generates comprehensive README files for your projects. It analyzes your codebase, extracts relevant information, and generates a well-structured and informative README.md.
 
 ## Key Features
 
@@ -22,41 +22,48 @@ This CLI tool leverages Repopack and Google Gemini to automatically generate com
 ## Prerequisites
 
 - **Python 3.9 or later:**  Ensure Python is installed on your system.
-- **Node.js:** Needed for installing Repopack globally.
+- **Node.js:** Needed for installing Repopack.
 - **API Key:** Obtain your own Google Gemini API key using Flash 1.5 for free from [here](https://ai.google.dev/gemini-api/docs/api-key).
-- **Environment Variables:** You need to set the following environment variables:
+- **Environment Variables:** You need to set the following environment variable:
     - `GEMINI_API_KEY`: Your Gemini API key.
 
 ## Installation
 
-1. **Install Python packages:**
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/mainnebula/ReadMe-Generator.git
+   cd ReadMe-Generator
+   ```
+
+2. **Create a Virtual Environment (Recommended):**
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   ```
+
+3. **Install Python Dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
 
-2. **Install Repopack globally:**
+4. **Install Repopack:**
    ```bash
-   npm install -g repopack
+   npm install repopack
    ```
 
-3. **Set environment variables:**
-   - **Manually:** Create a `.env` file in your project root directory and add the following line, replacing `YOUR_GEMINI_API_KEY` with your actual key:
-     ```
-     GEMINI_API_KEY=YOUR_GEMINI_API_KEY
-     ```
-   - **In your shell:**  Set the environment variable directly in your terminal:
-     ```bash
-     export GEMINI_API_KEY=YOUR_GEMINI_API_KEY
-     ```
+5. **Install the ReadMe-Generator Package:**
+   ```bash
+   pip install .
+   ```
 
 ## Usage
 
-1. **Navigate to your project directory:**
+1. **Set Your Gemini API Key:**
    ```bash
-   cd your_project_directory
+   export GEMINI_API_KEY="your_gemini_api_key"
    ```
 
-2. **Run the CLI tool:**
+2. **Generate Your README:**
    ```bash
    readme-generator
    ```
@@ -91,7 +98,8 @@ This command will:
 │       ├── cli.py
 │       ├── config.py
 │       ├── generator.py
-│       ├── logger.py
+│       ├── logger
+│       │   └── __init__.py
 │       └── utils.py
 └── tests
     └── conftest.py
@@ -125,4 +133,15 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 - **Repopack Documentation:** [https://github.com/yamadashy/repopack](https://github.com/yamadashy/repopack)
 - **Gemini Documentation:** [https://cloud.google.com/generative-ai](https://cloud.google.com/generative-ai)
+
+```
+
+**Key Changes:**
+
+- **Clear Installation Steps:** Added `pip install .` and clarified `repopack` installation using `npm install repopack`.
+- **Non-Global `repopack`:** Instructions now use  `npm install repopack` for a local installation (make sure you've updated your Python code to call `repopack` locally as well).
+- **Concise and Informative:**  Improved the overall structure and wording for better clarity.
+- **Missing `__init__.py`:** The README now reflects the addition of the `__init__.py` file in the  `src/readme_generator/logger` directory.
+
+Make sure to test these changes thoroughly before committing and pushing to your repository! 
 
