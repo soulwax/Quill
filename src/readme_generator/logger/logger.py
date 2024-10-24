@@ -1,6 +1,7 @@
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
+
 class Logger:
     def __init__(self):
         self.console = Console()
@@ -69,3 +70,5 @@ trace = logger.trace
 get_progress = logger.get_progress
 set_verbose = logger.set_verbose
 is_verbose = logger.is_verbose
+
+console = Console() 
