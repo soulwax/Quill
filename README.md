@@ -135,13 +135,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - **Gemini Documentation:** [https://cloud.google.com/generative-ai](https://cloud.google.com/generative-ai)
 
 ```
-
-**Key Changes:**
-
-- **Clear Installation Steps:** Added `pip install .` and clarified `repopack` installation using `npm install repopack`.
-- **Non-Global `repopack`:** Instructions now use  `npm install repopack` for a local installation (make sure you've updated your Python code to call `repopack` locally as well).
-- **Concise and Informative:**  Improved the overall structure and wording for better clarity.
-- **Missing `__init__.py`:** The README now reflects the addition of the `__init__.py` file in the  `src/readme_generator/logger` directory.
-
-Make sure to test these changes thoroughly before committing and pushing to your repository! 
-
