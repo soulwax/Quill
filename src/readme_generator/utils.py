@@ -5,38 +5,21 @@ from typing import Optional
 
 from . import logger
 
-def ensure_repopack_installed() -> None:
-    """Ensure Repopack is installed globally."""
-    try:
-        subprocess.run(
-            ["repopack", "--version"],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            check=True
-        )
-    except (subprocess.CalledProcessError, FileNotFoundError):
-        logger.warning("Repopack not found. Installing globally...")
-        try:
-            subprocess.run(["npm", "install", "-g", "repopack"], check=True)
-        except subprocess.CalledProcessError as e:
-            logger.error("Failed to install Repopack. Please install it manually:")
-            logger.console.print("npm install -g repopack")
-            sys.exit(1)
-
 def run_repopack(directory: Path, output_file: Path) -> None:
-    """Run Repopack on a directory."""
+    """Run Repopack on a directory using npx."""
     try:
-        # Construct the path to the local repopack executable
-        repopack_path = Path(__file__).parent.parent.parent / 'node_modules' / '.bin' / 'repopack' 
-
+        logger.debug("Packing codebase with Repopack...")  # Changed from info to debug
         subprocess.run([
-            str(repopack_path),  # Use the constructed path here 
+            "npx",
+            "repopack",
             str(directory),
             "-o", str(output_file)
         ], check=True)
+        logger.success(f"Successfully packed codebase into {output_file}")  # Changed from info to success
     except subprocess.CalledProcessError as e:
         logger.error(f"Failed to run Repopack: {e}")
         sys.exit(1)
+
 def read_file(path: Path) -> str:
     """Read and return the contents of a file."""
     try:

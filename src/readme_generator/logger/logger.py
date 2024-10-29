@@ -1,71 +1,43 @@
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
-class Logger:
-    def __init__(self):
-        self.console = Console()
-        self._verbose = False
+console = Console()
+_verbose = False
 
-    def set_verbose(self, value: bool) -> None:
-        """Set verbose logging mode."""
-        self._verbose = value
+def set_verbose(verbose: bool) -> None:
+    """Set verbose logging mode."""
+    global _verbose
+    _verbose = verbose
 
-    def is_verbose(self) -> bool:
-        """Check if verbose logging is enabled."""
-        return self._verbose
+def is_verbose() -> bool:
+    """Check if verbose logging is enabled."""
+    return _verbose
 
-    def get_progress(self) -> Progress:
-        """Create and return a Progress instance with custom formatting."""
-        return Progress(
-            SpinnerColumn(),
-            TextColumn("[progress.description]{task.description}"),
-            console=self.console
-        )
+def debug(message: str) -> None:
+    """Log a debug message (only in verbose mode)."""
+    if _verbose:
+        console.print(f"[dim]{message}[/dim]")
 
-    def debug(self, message: str) -> None:
-        """Log a debug message (only in verbose mode)."""
-        if self._verbose:
-            self.console.print(f"[dim blue]DEBUG: {message}[/]")
+def success(message: str) -> None:
+    """Log a success message."""
+    console.print(f"[green]{message}[/green]")
 
-    def error(self, message: str, exc_info: bool = False) -> None:
-        """Log an error message."""
-        self.console.print(f"[red]Error: {message}[/]")
-        if exc_info and self._verbose:
-            import traceback
-            self.console.print(f"[red]{traceback.format_exc()}[/]")
+def warning(message: str) -> None:
+    """Log a warning message."""
+    console.print(f"[yellow]Warning: {message}[/yellow]")
 
-    def success(self, message: str) -> None:
-        """Log a success message."""
-        self.console.print(f"[green]{message}[/]")
+def error(message: str, exc_info: bool = False) -> None:
+    """Log an error message."""
+    console.print(f"[red]Error: {message}[/red]")
+    if exc_info and _verbose:
+        import traceback
+        console.print(f"[dim]{traceback.format_exc()}[/dim]")
 
-    def warning(self, message: str) -> None:
-        """Log a warning message."""
-        self.console.print(f"[yellow]{message}[/]")
-
-    def info(self, message: str) -> None:
-        """Log an info message."""
-        self.console.print(f"[cyan]{message}[/]")
-
-    def log(self, *args, **kwargs) -> None:
-        """Log a plain message."""
-        self.console.print(*args, **kwargs)
-
-    def trace(self, message: str) -> None:
-        """Log a trace message (only in verbose mode)."""
-        if self._verbose:
-            self.console.print(f"[dim grey]TRACE: {message}[/]")
-
-# Create and export a single global logger instance
-logger = Logger()
-
-# Export commonly used functions at module level
-debug = logger.debug
-error = logger.error
-success = logger.success
-warning = logger.warning
-info = logger.info
-log = logger.log
-trace = logger.trace
-get_progress = logger.get_progress
-set_verbose = logger.set_verbose
-is_verbose = logger.is_verbose
+def get_progress() -> Progress:
+    """Get a progress context for showing status."""
+    return Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        console=console,
+        transient=True
+    )
