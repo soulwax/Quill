@@ -72,9 +72,9 @@ async def async_main() -> None:
             
         logger.debug("Initializing generator...")
         generator = ReadmeGenerator(config)
-        
+
         logger.debug(f"Processing directory: {args.directory}")
-        await generator.process_directory(
+        await generator.process_directory(  # Add 'await' here!
             args.directory,
             args.output,
             args.readme,

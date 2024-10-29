@@ -10,7 +10,7 @@ from contextlib import nullcontext
 
 from . import logger
 from .config import Config
-from .utils import ensure_repopack_installed, run_repopack, read_file, write_file
+from .utils import run_repopack, read_file, write_file
 
 class ReadmeGenerator:
     """Generator class for creating README files using Repopack and Gemini."""
@@ -72,13 +72,13 @@ Please generate a comprehensive README.md based on this information."""
         logger.debug("Prompt generated successfully")
         return prompt
 
-    def generate_readme(self, codebase_content: str) -> str:
+    def generate_readme(self, codebase_content: str) -> str:  # Remove async here
         """Generate README content using Gemini."""
         logger.debug("Generating README content with Gemini...")
         try:
             prompt = self.generate_prompt(codebase_content)
             logger.debug("Sending prompt to Gemini...")
-            response = self.model.generate_content(prompt)
+            response = self.model.generate_content(prompt)  # Remove await here
             logger.debug("README content generated successfully")
             return response.text
         except Exception as e:
@@ -86,12 +86,12 @@ Please generate a comprehensive README.md based on this information."""
             logger.error(error_msg, exc_info=True)
             raise RuntimeError(error_msg) from e
 
-    def process_directory(self, 
-                         directory: str, 
-                         output_file: Optional[str] = None,
-                         readme_file: Optional[str] = None,
-                         keep_packed: bool = False,
-                         temp_dir: Optional[str] = None) -> None:
+    async def process_directory(self, 
+                            directory: str, 
+                            output_file: Optional[str] = None,
+                            readme_file: Optional[str] = None,
+                            keep_packed: bool = False,
+                            temp_dir: Optional[str] = None) -> None:
         """Process a directory to generate README."""
         try:
             directory_path = Path(directory).resolve()
@@ -116,14 +116,6 @@ Please generate a comprehensive README.md based on this information."""
                 
                 with temp_context as temp_path:
                     try:
-                        # Check Repopack installation
-                        task_id = progress.add_task(
-                            "Checking Repopack installation...",
-                            total=None
-                        )
-                        ensure_repopack_installed()
-                        progress.remove_task(task_id)
-
                         # Run Repopack
                         task_id = progress.add_task(
                             "Packing codebase with Repopack...",
@@ -148,7 +140,7 @@ Please generate a comprehensive README.md based on this information."""
                             "Generating README with Gemini...",
                             total=None
                         )
-                        readme_content = self.generate_readme(codebase_content)
+                        readme_content = self.generate_readme(codebase_content)  # Remove await here
                         logger.debug(f"Generated README content ({len(readme_content)} characters)")
                         progress.remove_task(task_id)
 
