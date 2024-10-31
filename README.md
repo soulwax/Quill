@@ -17,8 +17,8 @@ A command-line tool that automatically generates comprehensive README.md files f
 
 2. **Clone the repository:**
    ```bash
-   git clone https://github.com/mainnebula/readme-generator-cli
-   cd readme-generator-cli
+   git clone https://github.com/mainnebula/ReadMe-Generator
+   cd ReadMe-Generator
    ```
 
 3. **Create and activate a virtual environment:**
@@ -45,7 +45,7 @@ A command-line tool that automatically generates comprehensive README.md files f
 
 ```bash
 # Activate the virtual environment if not already active
-source /path/to/readme-generator-cli/.venv/bin/activate
+source /path/to/ReadMe-Generator/.venv/bin/activate
 
 # Create .env file with your API key
 echo "GEMINI_API_KEY=your_key_here" > .env
@@ -61,7 +61,7 @@ There are two ways to use the tool in different directories:
 **Method A: With Activated Virtual Environment**
 ```bash
 # 1. Activate the virtual environment
-source /path/to/readme-generator-cli/.venv/bin/activate
+source /path/to/ReadMe-Generator/.venv/bin/activate
 
 # 2. Navigate to your project
 cd /path/to/your/project
@@ -82,8 +82,9 @@ cd /path/to/your/project
 echo "GEMINI_API_KEY=your_key_here" > .env
 
 # 3. Run using full path
-/path/to/readme-generator-cli/.venv/bin/readme-generator
+/path/to/ReadMe-Generator/.venv/bin/readme-generator
 ```
+
 
 #### 3. Command Options
 
@@ -112,14 +113,14 @@ readme-generator --verbose -k -o packed.txt -r docs/README.md /path/to/directory
 1. **Generate README for a sibling project:**
    ```bash
    cd ../another-project
-   /path/to/readme-generator-cli/.venv/bin/readme-generator
+   /path/to/ReadMe-Generator/.venv/bin/readme-generator
    ```
 
 2. **Generate README for a project in your home directory:**
    ```bash
-   /path/to/readme-generator-cli/.venv/bin/readme-generator ~/projects/my-app
+   /path/to/ReadMe-Generator/.venv/bin/readme-generator ~/projects/my-app
    ```
-
+   
 3. **Generate README with detailed logging:**
    ```bash
    readme-generator --verbose
@@ -142,18 +143,16 @@ The tool reads these environment variables (in your .env file):
 ### Project Structure
 
 ```
-readme-generator-cli/
+ReadMe-Generator/
 ├── src/
-│   ├── readme_generator/
-│   │   ├── logger/
-│   │   │   ├── __init__.py
-│   │   │   └── logger.py
-│   │   ├── __init__.py
-│   │   ├── __main__.py
-│   │   ├── cli.py
-│   │   ├── config.py
-│   │   ├── generator.py
-│   │   └── utils.py
+│   └── readme_generator/
+│       ├── __init__.py
+│       ├── __main__.py
+│       ├── cli.py
+│       ├── config.py
+│       ├── generator.py
+│       ├── logger.py
+│       └── utils.py
 ├── tests/
 │   └── conftest.py
 ├── .gitignore
@@ -163,7 +162,6 @@ readme-generator-cli/
 ├── requirements.txt
 └── setup.py
 ```
-
 ### Error Messages
 
 - **`GEMINI_API_KEY not found in environment variables`**: Make sure to set the `GEMINI_API_KEY` environment variable in your `.env` file.
@@ -198,7 +196,7 @@ If you encounter any other errors, please refer to the detailed logs in verbose 
 4. **Node.js dependency errors:**
    ```bash
    # Reinstall dependencies
-   cd /path/to/readme-generator-cli
+   cd /path/to/ReadMe-Generator
    rm -rf node_modules
    pip install -e .
    ```
