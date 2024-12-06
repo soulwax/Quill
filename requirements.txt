@@ -1,4 +1,4 @@
 google-generativeai>=0.2.0
 python-dotenv>=1.0.0
 rich>=13.7.0
-repopack-py>=0.1.0
+repopack>=0.1.4
