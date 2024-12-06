@@ -3,24 +3,38 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "readme-generator-cli"
+name = "quill"
 version = "1.0.0"
-description = "Generate comprehensive README files using Repopack and Gemini"
+description = "Generate comprehensive README files for your project via LLM"
 readme = "README.md"
-requires-python = ">=3.9,<3.13"  # Changed this line to fix version constraint
+requires-python = ">=3.9,<3.13"  
 authors = [
-    { name = "Your Name", email = "your.email@example.com" }
+    { name = "Rober", email = "your.email@example.com" }
 ]
 dependencies = [
     "google-generativeai>=0.2.0",
     "python-dotenv>=1.0.0",
     "rich>=13.7.0",
-    "repopack-py>=0.1.0",
+    "repopack>=0.1.4",
 
 ]
 
+classifiers = [  # Added classifiers for PyPI
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Documentation",
+]
+keywords = ["readme", "documentation", "generator", "AI", "Gemini"]
+
 [project.scripts]
-readme-generator = "readme_generator.__main__:main"
+quill = "quill.__main__:main"
 
 [tool.black]
 line-length = 88

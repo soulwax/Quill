@@ -1,4 +1,4 @@
-# src/readme_generator/generator.py
+# src/quill/generator.py
 import tempfile
 import shutil
 from pathlib import Path
