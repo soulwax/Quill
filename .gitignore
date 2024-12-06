@@ -26,6 +26,7 @@ wheels/
 env/
 venv/
 ENV/
+venv_3.12/
 
 # IDE
 .idea/
