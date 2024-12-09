@@ -31,12 +31,15 @@ classifiers = [  # Added classifiers for PyPI
     "Programming Language :: Python :: 3.12",
     "Topic :: Software Development :: Documentation",
 ]
+
 keywords = ["readme", "documentation", "generator", "AI", "Gemini", "LLM"]
 
 [
 project.urls]  
 Repository = "https://github.com/usedispatch/Quill"
 Issues = "https://github.com/usedispatch/Quill"
+=======
+keywords = ["readme", "documentation", "generator", "AI", "Gemini"]
 
 [project.scripts]
 quill = "quill.__main__:main"
