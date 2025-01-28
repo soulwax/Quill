@@ -1,3 +1,5 @@
+# File: src/quill/config.py
+
 from dataclasses import dataclass
 from typing import Optional
 from pathlib import Path

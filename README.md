@@ -31,12 +31,14 @@ pip install quill
 If you want to contribute or modify the code:
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/usedispatch/Quill.git
    cd Quill
    ```
 
 2. **Create a virtual environment (recommended):**
+
    ```bash
    python3 -m venv venv
    source venv/bin/activate  # On Linux/macOS
@@ -44,6 +46,7 @@ If you want to contribute or modify the code:
    ```
 
 3. **Install in development mode:**
+
    ```bash
    pip install -e .
    ```
@@ -52,7 +55,7 @@ If you want to contribute or modify the code:
 
 Before using Quill, you need to set your Google Gemini API key. Create a `.env` file in your project directory and add your API key:
 
-```
+```plaintext
 GEMINI_API_KEY=your_gemini_api_key
 ```
 
@@ -89,7 +92,7 @@ quill -o my_repo.txt -r MY_README.md
 
 ## Project Structure
 
-```
+```bash
 Quill/
 ├── src/
 │   └── quill/

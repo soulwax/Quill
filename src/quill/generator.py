@@ -1,3 +1,5 @@
+# File: src/quill/generator.py
+
 # src/quill/generator.py
 import tempfile
 import shutil

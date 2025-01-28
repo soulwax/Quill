@@ -1,0 +1,25 @@
+├───.DS_Store
+├───.gitignore
+├───LICENSE
+├───pyproject.toml
+├───README.md
+├───requirements-dev.txt
+├───requirements.txt
+├───setup.py
+├───test_gemini.py
+├───tree.txt
+├───src
+│   ├───.DS_Store
+│   └───quill
+│       ├───.DS_Store
+│       ├───__init__.py
+│       ├───__main__.py
+│       ├───cli.py
+│       ├───config.py
+│       ├───generator.py
+│       ├───utils.py
+│       └───logger
+│           ├───__init__.py
+│           └───logger.py
+└───tests
+    └───conftest.py

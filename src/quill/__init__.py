@@ -1,3 +1,5 @@
+# File: src/quill/__init__.py
+
 """
 README Generator CLI Tool
 Generate comprehensive README files using Repopack and Gemini.

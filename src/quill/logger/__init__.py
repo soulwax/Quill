@@ -1,3 +1,5 @@
+# File: src/quill/logger/__init__.py
+
 from .logger import (
     error,
     success,

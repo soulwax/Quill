@@ -1,3 +1,5 @@
+# File: src/quill/cli.py
+
 import argparse
 import asyncio
 from typing import Optional

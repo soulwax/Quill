@@ -1,3 +1,5 @@
+# File: src/quill/__main__.py
+
 """Main entry point for the readme-generator-cli package."""
 
 from .cli import main

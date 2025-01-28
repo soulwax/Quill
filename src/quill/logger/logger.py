@@ -1,3 +1,5 @@
+# File: src/quill/logger/logger.py
+
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
